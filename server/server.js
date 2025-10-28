@@ -22,6 +22,14 @@ mongoose.connect(process.env.MONGO_URI)
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+// Serve React frontend build statics
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  // Serve the React app for any non-API routes
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
