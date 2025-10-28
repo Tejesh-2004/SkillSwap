@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FaUserCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from './api';
 
 const styles = {
   bgWrap: {
@@ -36,7 +37,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '1rem',
-    background: 'transparent', // No white/other background here
+    background: 'transparent',
     width: 'min(350px, 90vw)'
   },
   icon: {
@@ -94,21 +95,20 @@ function Login() {
     if (error) setError('');
   };
 
-const handleSubmit = async e => {
-  e.preventDefault();
-  try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', form);
-    if (res.data.token) {
-      localStorage.setItem('token', res.data.token); // store token
-      navigate('/profile'); // redirect to profile page
-    } else {
-      setError('Unexpected server response');
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${API_BASE_URL}/api/auth/login`, form);
+      if (res.data.token) {
+        localStorage.setItem('token', res.data.token); // store token
+        navigate('/profile'); // redirect to profile page
+      } else {
+        setError('Unexpected server response');
+      }
+    } catch (err) {
+      setError('Wrong password or username');
     }
-  } catch (err) {
-    setError('Wrong password or username');
-  }
-};
-
+  };
 
   return (
     <div>

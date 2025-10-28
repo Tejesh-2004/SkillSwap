@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from './api';
 
 const styles = {
   container: {
@@ -50,7 +51,7 @@ function Profile() {
         return;
       }
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/profile', {
+        const res = await axios.get(`${API_BASE_URL}/api/auth/profile`, {
           headers: { Authorization: 'Bearer ' + token }
         });
         setUser(res.data);
@@ -68,7 +69,7 @@ function Profile() {
     <div style={styles.container}>
       {user.profilePhoto && (
         <img
-          src={`http://localhost:5000/uploads/${user.profilePhoto}`}
+          src={`${API_BASE_URL}/uploads/${user.profilePhoto}`}
           alt="profile"
           style={styles.avatar}
         />
