@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { API_BASE_URL } from './api';
 
 const styles = {
   bgWrap: {
     minHeight: '100vh',
     width: '100vw',
-    backgroundImage: "url('/subg.png')",
+    backgroundImage: "url('/subg.png')",  // Adjust the filename if necessary
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -19,7 +18,7 @@ const styles = {
     maxWidth: 600,
     margin: '3rem auto',
     padding: '2rem',
-    backgroundColor: 'rgba(255,255,255,0.93)',
+    backgroundColor: 'rgba(255,255,255,0.93)', // semi-transparent for better look on bg
     borderRadius: 10,
     boxShadow: '0 2px 16px rgba(0,0,0,0.07)',
     fontFamily: "'Quicksand', sans-serif",
@@ -130,7 +129,7 @@ function Signup() {
       formData.append(key, value);
     });
     try {
-      const res = await axios.post(`${API_BASE_URL}/api/auth/signup`, formData, {
+      const res = await axios.post('http://localhost:5000/api/auth/signup', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setMessage(res.data.message || 'Signup successful!');
