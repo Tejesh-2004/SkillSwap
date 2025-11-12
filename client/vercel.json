@@ -1,0 +1,15 @@
+﻿{
+  "version": 2,
+  "installCommand": "cd client && npm ci",
+  "buildCommand": "cd client && node ./node_modules/react-scripts/scripts/build.js",
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
