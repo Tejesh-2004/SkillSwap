@@ -1,11 +1,9 @@
-{
+﻿{
   "version": 2,
-  "builds": [
-    { "src": "server/server.js", "use": "@vercel/node" }
-  ],
+  "installCommand": "cd client && npm ci",
+  "buildCommand": "cd client && node ./node_modules/react-scripts/scripts/build.js",
+  "outputDirectory": "client/build",
   "routes": [
-    { "src": "/api/(.*)", "dest": "server/server.js" },
-    { "src": "/uploads/(.*)", "dest": "server/server.js" },
-    { "src": "/(.*)", "dest": "client/build/index.html" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
