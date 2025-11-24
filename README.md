@@ -95,7 +95,7 @@ Then open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 | Component    | Platform | URL                                                                            |
 | ------------ | -------- | ------------------------------------------------------------------------------ |
-| **Frontend** | Vercel   | [https://skillswap.vercel.app](skill-swap-eta-nine.vercel.app)                   ||
+| **Frontend** | Vercel   | [https://skill-swap-eta-nine.vercel.app/]                   ||
 
 ---
 
@@ -113,6 +113,7 @@ You can later add:
 
 **Developed by:**
 👤 [Tejesh](https://github.com/Tejesh-2004)
+
 
 
 
